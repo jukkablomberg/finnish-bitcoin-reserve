@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# PDF build artifacts (CI builds these; we don't commit them)
+build/
+*.aux
+*.log
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# Editor configs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local secrets (should never exist here, but defensive)
+.env
+.env.local
+secrets/
+*.key
+
+# OS noise
+Thumbs.db
+desktop.ini

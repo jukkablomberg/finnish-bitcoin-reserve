@@ -1,0 +1,12 @@
+country,holdings_btc,as_of_date,acquisition_mode,source_url,notes
+United States,~207000,2025-03-01,seizure + Strategic Reserve EO,https://www.whitehouse.gov/,Aggregated estimate; precise figure not published. Includes Silk Road and Bitfinex hack recoveries.
+United Kingdom,~61000,2024-12-01,seizure (China laundering case 2018),https://www.gov.uk/government/news/,Pending forfeiture decisions; status reviewed annually.
+China,~190000,2020-12-01,seizure (PlusToken 2020),https://www.scmp.com/,Holdings status unclear; some reportedly auctioned.
+El Salvador,~6100,2026-04-30,direct purchase + mining,https://nayibtracker.com/,Updated daily via public tracker.
+Bhutan,~3200,2026-05-12,sovereign mining via Druk Holding,https://www.banklesstimes.com/articles/2026/05/12/bhutan-transfers-100-btc-worth-8-1m-as-sovereign-reserve-drops-to-252m/,Recent 100 BTC transfer May 2026; reserves at ~$252M.
+Finland,~90,2024-12-13,seizure (Customs case 2016),https://bitbo.io/treasuries/finland/,Custody arrangement not publicly disclosed; portions previously auctioned.
+Ukraine,~46000,2022-08-01,donations + seizure,https://www.bitcoin.com/,War-related donations; partially liquidated.
+Germany,0,2024-07-01,fully liquidated 2024,https://www.bloomberg.com/,Sold ~50000 BTC in July 2024 at ~$54000 average; current cost basis significant.
+Switzerland,0,2026-05-01,no sovereign holdings; referendum failed,https://www.hokanews.com/2026/05/swiss-bitcoin-reserve-campaign-fails-to.html,Citizen initiative did not gather signatures.
+Sweden,unknown,2024-10-01,opposition proposal filed,https://beincrypto.com/swedens-opposition-party-calls-for-strategic-bitcoin-reserve/,Motion 2024/25:1232; under Finance Committee review.
+Czech Republic,0,2025-01-30,public consideration by CNB Governor,https://www.cnb.cz/,Governor Aleš Michl publicly discussed potential allocation.

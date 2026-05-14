@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+title: "Finland's Path to a Sovereign Bitcoin Reserve: Operating Model, Custody, Political Sequencing"
+message: "If you cite this whitepaper, please use the following metadata."
+type: report
+authors:
+  - family-names: Blomberg
+    given-names: Jukka
+    affiliation: NorthPoint
+    city: Helsinki
+    country: FI
+    website: "https://northpoint.fi"
+date-released: 2026-05-13
+version: "0.2"
+repository-code: "https://github.com/jukkablomberg/finnish-bitcoin-reserve"
+url: "https://northpoint.fi/whitepapers/finnish-bitcoin-reserve"
+license: CC-BY-4.0
+keywords:
+  - Bitcoin
+  - sovereign reserves
+  - Finland
+  - monetary policy
+  - cryptocurrency
+  - Nordic policy
+  - Suomen Pankki
+  - Eduskunta
+abstract: >-
+  The international sovereign Bitcoin landscape converged between October 2024 and
+  May 2026. The United States established a Strategic Bitcoin Reserve by Executive
+  Order. Sweden's opposition filed a parliamentary motion for a national reserve,
+  naming Finland and Norway as the comparator states it risks falling behind. The
+  Czech National Bank Governor publicly considered an allocation. Switzerland's
+  grassroots referendum failed. The European Central Bank is silent — the
+  composition of member-state reserves is a national competence. Finland has not
+  yet defined its position. This whitepaper proposes one: a three-track operating
+  model (governance framework, legal mechanism for permanent accumulation,
+  strategic allocation), a three-tier custody architecture, a cross-party
+  political sequencing plan, and replies to the five most common counter-arguments.
+  Published under CC-BY 4.0 to enable forks and adaptation by other Nordic and
+  European jurisdictions.

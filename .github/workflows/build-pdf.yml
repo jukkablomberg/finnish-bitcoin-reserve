@@ -1,0 +1,67 @@
+name: Build whitepaper PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'en/whitepaper.md'
+      - 'fi/valkokirja.md'
+      - '.github/workflows/build-pdf.yml'
+  release:
+    types: [created]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-luatex texlive-latex-extra fonts-noto
+
+      - name: Build English PDF
+        run: |
+          mkdir -p build
+          pandoc en/whitepaper.md \
+            --from markdown \
+            --pdf-engine=xelatex \
+            -V geometry:margin=1in \
+            -V mainfont="Noto Serif" \
+            -V sansfont="Noto Sans" \
+            -V monofont="Noto Sans Mono" \
+            -V linkcolor=blue \
+            -V urlcolor=blue \
+            -V toccolor=black \
+            -V documentclass=article \
+            -V papersize=a4 \
+            -V fontsize=11pt \
+            --toc \
+            --toc-depth=2 \
+            --number-sections \
+            --metadata title="Finland's Path to a Sovereign Bitcoin Reserve" \
+            --metadata subtitle="Operating Model, Custody, Political Sequencing" \
+            --metadata author="Jukka Blomberg · NorthPoint, Helsinki" \
+            --metadata date="13 May 2026" \
+            -o build/finnish-bitcoin-reserve-en.pdf
+
+      - name: Upload PDF as artifact (every push)
+        uses: actions/upload-artifact@v4
+        with:
+          name: whitepaper-pdf
+          path: build/finnish-bitcoin-reserve-en.pdf
+          retention-days: 90
+
+      - name: Attach PDF to release (release events only)
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/finnish-bitcoin-reserve-en.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

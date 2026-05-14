@@ -1,0 +1,328 @@
+<!--
+  Landing page for: northpoint.fi/whitepapers/finnish-bitcoin-reserve
+  Drop this into the NorthPoint site as a new route. The styling assumes a minimal,
+  serif-heavy aesthetic consistent with the existing /resources/writing pages.
+
+  Replace the placeholders below before publishing:
+    - {{LATEST_PDF_URL}}  -- e.g. https://github.com/jukkablomberg/finnish-bitcoin-reserve/releases/latest/download/finnish-bitcoin-reserve-en.pdf
+    - {{REPO_URL}}        -- https://github.com/jukkablomberg/finnish-bitcoin-reserve
+    - {{EMAIL_ENDPOINT}}  -- the URL of your email-capture form handler (e.g. Buttondown, ConvertKit, or NorthPoint's existing newsletter endpoint)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finland's Path to a Sovereign Bitcoin Reserve — NorthPoint</title>
+  <meta name="description" content="A policy whitepaper by Jukka Blomberg proposing an operating model, custody architecture, and political sequencing for a Finnish sovereign Bitcoin reserve. Published under CC-BY 4.0.">
+  <meta property="og:title" content="Finland's Path to a Sovereign Bitcoin Reserve">
+  <meta property="og:description" content="Sweden's parliamentary motion for a national Bitcoin reserve names Finland by name as the country it fears falling behind. The US has moved. Czechia has moved. The ECB is silent. Finland has no public position. This whitepaper is one.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://northpoint.fi/whitepapers/finnish-bitcoin-reserve">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://northpoint.fi/whitepapers/finnish-bitcoin-reserve">
+  <style>
+    :root {
+      --fg: #1a1a1a;
+      --fg-muted: #5a5a5a;
+      --bg: #faf8f3;
+      --accent: #c8732a;
+      --accent-dark: #9c5820;
+      --border: #d8d4cc;
+      --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+      --sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--serif);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.65;
+      font-size: 18px;
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+    .breadcrumb {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+    .breadcrumb a { color: var(--fg-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      line-height: 1.18;
+      margin: 0 0 0.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .subtitle {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--fg-muted);
+      margin: 0 0 2rem;
+    }
+    .byline {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--fg-muted);
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .byline strong { color: var(--fg); font-weight: 600; }
+    .lede {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin: 0 0 2.5rem;
+    }
+    .lede strong { color: var(--accent-dark); font-weight: 700; }
+    .cta-block {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 2rem 2rem 1.5rem;
+      margin: 2rem 0 3rem;
+      border-radius: 4px;
+    }
+    .cta-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-family: var(--sans);
+      font-weight: 600;
+      padding: 0.85rem 1.6rem;
+      text-decoration: none;
+      border-radius: 3px;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+      transition: background 0.15s ease;
+    }
+    .cta-primary:hover { background: var(--accent-dark); }
+    .cta-secondary {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--fg-muted);
+      text-decoration: none;
+      margin-left: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid transparent;
+    }
+    .cta-secondary:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .cta-meta {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      margin-top: 1.25rem;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      margin: 3rem 0 1rem;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+    }
+    p { margin: 0 0 1.25rem; }
+    ol, ul { margin: 0 0 1.5rem; padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+    ol strong, ul strong { color: var(--accent-dark); }
+    .pullquote {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--fg-muted);
+      border-left: 3px solid var(--accent);
+      padding-left: 1.25rem;
+      margin: 2rem 0;
+    }
+    .email-form {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      margin: 3rem 0;
+      border-radius: 4px;
+    }
+    .email-form h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      margin: 0 0 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+    .email-form p { font-size: 0.95rem; color: var(--fg-muted); margin-bottom: 1rem; }
+    .email-form input[type="email"] {
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: 1rem;
+      width: 60%;
+      min-width: 200px;
+      margin-right: 0.5rem;
+      border-radius: 3px;
+    }
+    .email-form button {
+      padding: 0.7rem 1.2rem;
+      background: var(--fg);
+      color: white;
+      font-family: var(--sans);
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    .email-form button:hover { background: var(--accent-dark); }
+    .author-block {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      margin: 3rem 0;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .author-block h3 {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin: 0 0 0.75rem;
+    }
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+    }
+    footer a { color: var(--fg-muted); }
+    footer a:hover { color: var(--accent); }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      .subtitle { font-size: 1.05rem; }
+      .container { padding: 2.5rem 1.25rem 4rem; }
+      .cta-secondary { display: block; margin-left: 0; margin-top: 0.5rem; }
+      .email-form input[type="email"] { width: 100%; margin-right: 0; margin-bottom: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <article class="container">
+
+    <nav class="breadcrumb">
+      <a href="/">NorthPoint</a> &nbsp;›&nbsp; <a href="/whitepapers">Whitepapers</a> &nbsp;›&nbsp; Finland's Path to a Sovereign Bitcoin Reserve
+    </nav>
+
+    <p class="eyebrow">Policy whitepaper · Version 0.1 · May 2026</p>
+
+    <h1>Finland's Path to a Sovereign Bitcoin Reserve</h1>
+    <p class="subtitle">Operating model, custody, political sequencing.</p>
+
+    <p class="byline">
+      By <strong>Jukka Blomberg</strong> · Founder, NorthPoint · Helsinki<br>
+      Published 13 May 2026 · CC-BY 4.0 · Open source on GitHub
+    </p>
+
+    <p class="lede">
+      Sweden's parliamentary motion for a national Bitcoin reserve <strong>names Finland and Norway by name</strong> as the comparator states it fears falling behind. The United States has established a Strategic Bitcoin Reserve. The Czech central-bank governor has publicly considered an allocation. Switzerland's grassroots path failed. The European Central Bank is silent — the composition of member-state reserves is a national competence. <strong>Finland has no public position on a question Sweden has named Finland into.</strong> This whitepaper proposes one.
+    </p>
+
+    <div class="cta-block">
+      <a class="cta-primary" href="{{LATEST_PDF_URL}}">⬇ Download the PDF</a>
+      <a class="cta-secondary" href="{{REPO_URL}}">View on GitHub →</a>
+      <p class="cta-meta">~12 pages · English · Licensed CC-BY 4.0 · Forkable for other jurisdictions</p>
+    </div>
+
+    <h2>Three recommendations</h2>
+
+    <ol>
+      <li><strong>Track A — Establish a published governance framework for state-held digital assets.</strong> Finland already custodies digital assets via law-enforcement seizure across at least three agencies, with no published framework and no reporting cadence. Track A formalizes the framework the operational reality already implies. <em>Zero new monetary policy required.</em></li>
+      <li><strong>Track B — Establish the legal mechanism for permanent sovereign accumulation.</strong> A one-time amendment to the Confiscation Act allows seized Bitcoin, after due process, to enter a permanent reserve rather than being liquidated. Budget-neutral. Mirrors the U.S. Strategic Bitcoin Reserve (2025) and the Swedish opposition proposal (2024).</li>
+      <li><strong>Track C — Strategic allocation.</strong> A 0.5% allocation of FX reserves to Bitcoin, phased over five years. Conditional, debated openly in Eduskunta, sized so that even a 90% drawdown is &lt; 0.05% of total reserves.</li>
+    </ol>
+
+    <p class="pullquote">
+      The case is not ideological — it is structural. The riskier path is doing nothing.
+    </p>
+
+    <h2>What's inside the whitepaper</h2>
+    <ul>
+      <li>The complete three-track operating model with what each requires and how each is sequenced.</li>
+      <li>A three-tier custody architecture: Suomen Pankki cold storage, institutional partner custody, and an independent proof-of-reserves audit layer.</li>
+      <li>Political sequencing tailored to each major Finnish party (Kokoomus, Perussuomalaiset, Keskusta, SDP, Vihreät, Vasemmistoliitto, RKP).</li>
+      <li>The Finnish structural edge — cheap nuclear electricity, cold climate, engineering credibility, high-trust governance, mature regulatory framework.</li>
+      <li>Replies to the five most common counter-arguments (volatility, ECB, illicit-use, legitimacy, the Dalio objection).</li>
+      <li>Three concrete moves Finland can take in 2026 with no new legislation, under €500,000 combined cost.</li>
+    </ul>
+
+    <div class="email-form">
+      <h3>Policy updates</h3>
+      <p>Email me when this whitepaper is updated, when significant Nordic sovereign-Bitcoin events happen, or when a Finnish parliamentary working group is convened. Approximately 1 email per quarter. No spam.</p>
+      <form action="{{EMAIL_ENDPOINT}}" method="post">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit">Notify me</button>
+      </form>
+    </div>
+
+    <h2>Why this is open source</h2>
+
+    <p>
+      A PDF on a website is a static artifact. A GitHub repository is a living, version-controlled, citable, forkable record — and it carries credibility in the engineering and Bitcoin communities that read this kind of work most carefully.
+    </p>
+
+    <p>
+      The whitepaper is licensed under Creative Commons Attribution 4.0, which means policymakers in Sweden, Norway, Estonia, Denmark, or anywhere else can fork it, adapt the political-sequencing chapter for their own party landscape, and republish. The custody and operating-model chapters are jurisdiction-agnostic.
+    </p>
+
+    <p>
+      <a href="{{REPO_URL}}">The repository</a> contains the source markdown, the data behind the figures cited, the build pipeline that produces the PDF, and an issue tracker for corrections, counter-arguments, and translation contributions.
+    </p>
+
+    <h2>How to cite</h2>
+
+    <p>
+      <em>Blomberg, J. (2026).</em> Finland's Path to a Sovereign Bitcoin Reserve: Operating Model, Custody, Political Sequencing. <em>Version 0.1.</em> <a href="{{REPO_URL}}">https://github.com/jukkablomberg/finnish-bitcoin-reserve</a>
+    </p>
+
+    <p>
+      Full citation metadata in <a href="{{REPO_URL}}/blob/main/CITATION.cff">CITATION.cff</a>.
+    </p>
+
+    <div class="author-block">
+      <h3>About the author</h3>
+      <p>
+        Jukka Blomberg is the founder of NorthPoint, a Helsinki-based marketing-and-compliance consultancy for crypto firms. He served as Chief Marketing Officer at two international cryptocurrency exchanges between 2017 and 2024, where he worked directly with regulators, listing committees, and treasury teams across Europe, Asia, and the Middle East. He writes at <a href="/resources/writing">northpoint.fi/resources/writing</a>.
+      </p>
+      <p style="margin-bottom:0;">
+        This whitepaper is published in personal capacity. The opinions are the author's own and do not necessarily reflect those of any current or former employer.
+      </p>
+    </div>
+
+    <footer>
+      <p>
+        <a href="{{REPO_URL}}">GitHub</a> ·
+        <a href="{{LATEST_PDF_URL}}">Download PDF</a> ·
+        <a href="{{REPO_URL}}/blob/main/CITATION.cff">Citation</a> ·
+        <a href="{{REPO_URL}}/blob/main/LICENSE">License (CC-BY 4.0)</a> ·
+        <a href="/">NorthPoint</a>
+      </p>
+      <p>© 2026 Jukka Blomberg. The whitepaper text is licensed under CC-BY 4.0; this landing page is part of northpoint.fi.</p>
+    </footer>
+
+  </article>
+</body>
+</html>
