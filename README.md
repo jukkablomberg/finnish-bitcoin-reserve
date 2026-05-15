@@ -51,8 +51,6 @@ finnish-bitcoin-reserve/
 ├── en/whitepaper.md         # full English text
 ├── fi/valkokirja.md         # full Finnish text (placeholder)
 ├── data/                    # CSVs behind the figures cited
-├── landing-page/            # static HTML for northpoint.fi/whitepapers/…
-├── distribution/            # tweet thread, press pitch, MP/SP cover emails
 └── .github/workflows/       # CI to auto-build the PDF on every commit
 ```
 
